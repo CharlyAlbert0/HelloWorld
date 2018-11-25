@@ -1,0 +1,74 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-text" data-background-color="red" style="width: 95%;">
+                        <div class="col-xs-6">
+                          <h4 class="card-title">Departamentos</h4>
+                          <p class="category">Lista de departamentos</p>
+                        </div>
+
+                        <div class="col-xs-6" style="text-align: right;" >
+                          <button class="btn btn-pinterest btn-wd" (click)="NewDepartamento()">
+                            Nuevo Departamento
+                          </button>
+
+                        </div>
+
+
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                                <thead class="text-warning">
+                                    <tr>
+                                      <th *ngFor="let cell of tableData.headerRow">{{ cell }}</th>
+                                    </tr>
+                                </thead>
+                              <tbody>
+                                  <tr *ngFor="let row of tableData.dataRows">
+                                      <td *ngFor="let cell of row">{{cell}}</td>
+                                  </tr>
+                              </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-text" data-background-color="red">
+                    <div class="col-xs-6">
+                      <h4 class="card-title">Subdepartmento</h4>
+                      <p class="category">Lista de Subdepartamentos asociados al departamento Seleccionado</p>
+                    </div>
+
+                    <div class="col-xs-6">
+                      <button class="btn btn-pinterest btn-wd" title="Agregar nuevo deportamento a la lista" (click)="NewDepartamento()">
+                        Nuevo Subdepartmento
+                      </button>
+
+                    </div>
+
+                  </div>
+                  <div class="card-content table-responsive">
+                      <table class="table">
+                              <thead class="text-warning">
+                                  <tr>
+                                    <th *ngFor="let cell of tableData.headerRow">{{ cell }}</th>
+                                  </tr>
+                              </thead>
+                            <tbody>
+                                <tr *ngFor="let row of tableData.dataRows">
+                                    <td *ngFor="let cell of row">{{cell}}</td>
+                                </tr>
+                            </tbody>
+                      </table>
+
+                  </div>
+              </div>
+            </div>
+        </div>
+
+    </div>
+</div>

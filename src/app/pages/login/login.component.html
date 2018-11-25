@@ -1,0 +1,166 @@
+<style media="screen">
+    btn-danger. {
+        background-color: white;
+    }
+    
+    .card img {
+        width: 45%;
+        height: auto;
+    }
+    
+    .card-login .card-title {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-weight: 300;
+    }
+</style>
+<div class="wrapper wrapper-full-page">
+    <nav class="navbar navbar-primary navbar-transparent navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-example">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Bienvenido a SYSIN</a>
+            </div>
+            <div class="collapse navbar-collapse" id="menu-example">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- <li>
+                        <a href="/dashboard">
+                            <i class="material-icons">dashboard</i> Dashboard
+                        </a>
+                    </li> -->
+                    <!-- <li class="">
+                        <a href="/pages/register">
+                            <i class="material-icons">fingerprint</i> Iniciar Sesión
+                        </a>
+                    </li> -->
+                    <li class=" active ">
+                        <a href="/pages/login">
+                            <i class="material-icons">person_add</i> Solicitar Acceso
+                        </a>
+                    </li>
+                    <!-- <li class="">
+                        <a href="/pages/lock">
+                            <i class="material-icons">lock_open</i> Lock
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="full-page login-page" filter-color="black" data-image="../../../assets/img/login.jpeg">
+        <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                        <form method="#" action="#">
+                            <div class="card card-login card-hidden">
+                                <div class="card-header text-center" data-background-color="bluedark">
+                                    <img width="40%" src="https://www.utr.edu.mx/templates/tx_academia/images/logo.png">
+
+
+                                    <div class="social-line">
+                                        <h4 class="card-title">Iniciar Sesión</h4>
+                                        <!-- <a href="#btn" class="btn btn-just-icon btn-simple">
+                                            <i class="fa fa-facebook-square"></i>
+                                        </a>
+                                        <a href="#pablo" class="btn btn-just-icon btn-simple">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                        <a href="#eugen" class="btn btn-just-icon btn-simple">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a> -->
+                                    </div>
+                                </div>
+                                <!-- <p class="category text-center">
+                                    Or Be Classical
+                                </p> -->
+                                <div class="card-content">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">face</i>
+                                        </span>
+                                        <div class="form-group label-floating" [ngClass]="IsValidUserName ? 'has-success':'x'" [ngClass]="IsInValidUser ? 'has-error':'x'">
+                                            <label class="control-label">Usuario</label>
+                                            <input type="text" [(ngModel)]="result.User" name="User" (keyup)="ValidUser()" class="form-control">
+                                            <span class="form-control-feedback" *ngIf="IsValidUserName">
+			                                           <i class="material-icons">done</i>
+		                                         </span>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">email</i>
+                                        </span>
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Email address</label>
+                                            <input type="email" class="form-control">
+                                        </div>
+                                    </div> -->
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Contraseña</label>
+                                            <input type="password" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer text-center">
+                                    <button type="submit" class="btn btn-success" (click)="Login()">                                           
+                                            Let's go
+                                            <i class="material-icons">play_arrow</i>
+                                        </button>
+
+                                </div>
+                            </div>
+                            <div class="alert alert-danger alert-with-icon card-hidden" *ngIf="IsValidUserName">
+                                <i class="material-icons" data-notify="icon">error_outline</i>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+                                <span data-notify="message"> <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good excuse for your Boss... </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <!-- <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav> -->
+                <p class="copyright pull-right">
+                    &copy; {{test | date: 'yyyy'}}
+                    <a href="#">GynTek</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+</div>

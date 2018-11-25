@@ -1,0 +1,60 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-text" data-background-color="orange">
+                        <h4 class="card-title">Tipos de Activo</h4>
+                        <p class="category">Lista de tipos de activo</p>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                                <thead class="text-warning">
+                                    <tr>
+                                      <th *ngFor="let cell of tableData.headerRow">{{ cell }}</th>
+                                    </tr>
+                                </thead>
+                              <tbody>
+                                  <tr *ngFor="let row of tableData.dataRows">
+                                      <td *ngFor="let cell of row">{{cell}}</td>
+                                  </tr>
+                              </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-9">
+              <div class="card">
+                  <div class="card-header card-header-text" data-background-color="red">
+                      <h4 class="card-title">Detalle de tipo de activo</h4>
+                      <!-- <p class="category">Lista de tipos de activo</p> -->
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="col-lg-12">
+                              <div class="card card-pricing card-raised">
+                                  <div class="content">
+                                      <h6 class="category">Nombre Tipo de Activo</h6>
+                                      <div class="icon icon-rose">
+                                          <i class="material-icons">home</i>
+                                      </div>
+                                      <h3 class="card-title">$29</h3>
+                                      <p class="card-description">
+                                          This is good if your company size is between 2 and 10 Persons.
+                                      </p>
+                                      <a href="#" class="btn btn-google btn-round">Borrar</a>
+                                      <a href="#" class="btn btn-google btn-round">Guardar</a>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                      </div>
+
+                  </div>
+              </div>
+            </div>
+        </div>
+
+    </div>
+</div>
