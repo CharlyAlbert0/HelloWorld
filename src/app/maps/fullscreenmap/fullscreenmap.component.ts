@@ -1,6 +1,7 @@
 declare var google:any;
 
-import {Component, OnInit,AfterViewInit,trigger,state,style,transition,animate,keyframes} from '@angular/core';
+import {Component, OnInit,AfterViewInit} from '@angular/core';
+import {trigger,state,style,transition,animate,keyframes} from '@angular/animations'
 
 interface marker {
 	lat: number;
