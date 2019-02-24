@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {AuthGuard} from './guards/authguard';
-import { AppComponent }   from './app.component';
+import { AppComponent }   from './app.component'; 
 
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';

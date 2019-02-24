@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TableData } from '../../md/md-table/md-table.component';
+import { TableData } from '../../../../md/md-table/md-table.component';
 
 @Component({
     moduleId: module.id,

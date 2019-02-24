@@ -6,7 +6,7 @@ declare var $:any;
 @Component({
     moduleId:module.id,
     selector: 'login-cmp',
-    templateUrl: './login.component.html'
+    templateUrl: 'login.component.html'
 })
 
 

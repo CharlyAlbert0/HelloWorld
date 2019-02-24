@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { TableData } from '../md/md-table/md-table.component';
+import { TableData } from '../../../md/md-table/md-table.component';
 
 declare var $: any;
 declare interface Task {

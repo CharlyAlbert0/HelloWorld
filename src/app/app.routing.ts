@@ -25,31 +25,31 @@ export const AppRoutes: Routes = [
         loadChildren: './dashboard/dashboard.module#DashboardModule'
     },{
         path: 'components',
-        loadChildren: './components/components.module#ComponentsModule'
+        loadChildren: './infrastructure/components/components.module#ComponentsModule'
     },{
         path: 'forms',
-        loadChildren: './forms/forms.module#Forms'
+        loadChildren: './infrastructure/components/forms/forms.module#Forms'
     },{
         path: 'tables',
-        loadChildren: './tables/tables.module#TablesModule'
+        loadChildren: './infrastructure/components/tables/tables.module#TablesModule'
     },{
         path: 'maps',
-        loadChildren: './maps/maps.module#MapsModule'
+        loadChildren: './infrastructure/components/maps/maps.module#MapsModule'
     },{
         path: 'widgets',
-        loadChildren: './widgets/widgets.module#WidgetsModule'
+        loadChildren: './infrastructure/components/widgets/widgets.module#WidgetsModule'
     },{
         path: 'charts',
-        loadChildren: './charts/charts.module#ChartsModule'
+        loadChildren: './infrastructure/components/charts/charts.module#ChartsModule'
     },{
         path: 'calendar',
-        loadChildren: './calendar/calendar.module#CalendarModule'
+        loadChildren: './infrastructure/components/calendar/calendar.module#CalendarModule'
     },{
         path: '',
         loadChildren: './userpage/user.module#UserModule'
     },{
         path: '',
-        loadChildren: './timeline/timeline.module#TimelineModule'
+        loadChildren: './infrastructure/components/timeline/timeline.module#TimelineModule'
     },{
         path: '',
         loadChildren: './users/users.module#UsersModule'
