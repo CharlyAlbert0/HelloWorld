@@ -13,6 +13,9 @@ import { NavbarModule} from './shared/navbar/navbar.module';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { AppRoutes } from './app.routing';
+import { LoginComponent } from './pages/login/login.component';
+
+
 @NgModule({
     imports:      [
         BrowserModule,
@@ -27,7 +30,8 @@ import { AppRoutes } from './app.routing';
     declarations: [
         AppComponent,
         AdminLayoutComponent,
-        AuthLayoutComponent
+        AuthLayoutComponent,
+        LoginComponent
     ],
     bootstrap:    [ AppComponent ]
 })

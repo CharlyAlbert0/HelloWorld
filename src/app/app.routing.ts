@@ -3,17 +3,23 @@ import { Routes } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import {AuthGuard} from './guards/authguard';
+import { LoginComponent } from './pages/login/login.component';
 
 export const AppRoutes: Routes = [
     {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'login',
       pathMatch: 'full',
     },
     {
       path: '',
       component: AdminLayoutComponent,canActivate:[AuthGuard],
       children: [
+        
           {
         path: '',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
