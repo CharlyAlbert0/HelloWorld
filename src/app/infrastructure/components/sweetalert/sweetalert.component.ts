@@ -127,5 +127,17 @@ export class SweetAlertComponent implements OnInit{
                 }).catch(swal.noop)
         }
     }
+
+
+
+    showSwalDialog(message:string){
+
+      swal({
+        title: message,
+        buttonsStyling: false,
+        confirmButtonClass: "btn btn-danger"
+    });
+  }
+   
     public ngOnInit(){}
 }

@@ -1,0 +1,63 @@
+<style media="screen">
+    .blackfondo {
+        background-color: black;
+    }
+</style>
+
+<div class="main-content">
+    <div class="container-fluid animated fadeIn slow">
+        <div class="" style="float:right">
+            <button type="button" name="button" class="btn btn-danger">Close</button>
+        </div>
+        <h3>Logs</h3>
+
+        <hr>
+        <div class="globalfil">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="input-group margin-bottom-sm">
+                        <span class="input-group-addon"><i class="fa fa-filter" aria-hidden="true"></i></span>
+                        <input #gb type="text" pInputText size="50" placeholder="Global Filter" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <p-dataTable [value]="logs" [rows]="10" [paginator]="true" [globalFilter]="gb" #dt selectionMode="single">
+      <p-column   field="IdLog" header="IdLog (st)" [filter]="true" [sortable]="true" filterPlaceholder="Search "></p-column>
+      <p-column   field="Proyect" header="Proyect (st)" [filter]="true" [sortable]="true" filterPlaceholder="Search "></p-column>
+      <p-column  field="SessionGuid" header="SessionGuid (st)"  [filter]="true" [sortable]="true" filterPlaceholder="Search "></p-column>
+      <p-column  field="ClientDatetime" header="ClientDatetime (st)"  [filter]="true" [sortable]="true" filterPlaceholder="Search "></p-column>
+      <p-column  field="ServerDatetime" header="ServerDatetime (st)"  [filter]="true" [sortable]="true" filterPlaceholder="Search "></p-column>
+      <p-column  field="Message" header="Message (st)"  [filter]="true" [sortable]="true" filterPlaceholder="Search "></p-column>
+      <p-column  field="StackTrace" header="StackTrace (st)"  [filter]="true" [sortable]="true" filterPlaceholder="Search "></p-column>
+      <p-column  field="ExceptionMessage" header="ExceptionMessage (st)"  [filter]="true" [sortable]="true" filterPlaceholder="Search "></p-column> -->
+
+        <!-- columna  con busqueda de multiselec -->
+        <!-- <p-column  field="Type" header="Type (Custom)" [filter]="true" [sortable]="true"  filterMatchMode="in" [style]="{'overflow':'visible'}">
+        <ng-template pTemplate="filter" let-col>
+          <p-multiSelect [options]="LogTypeFilter" defaultLabel="All types" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+        </ng-template>
+      </p-column> -->
+        <!-- columna de  con busqueda -->
+        <!-- <p-column  field="Priority" header="Proyect (Custom)" [filter]="true" [sortable]="true"  filterMatchMode="in" [style]="{'overflow':'visible'}">
+        <ng-template pTemplate="filter" let-col>
+          <p-multiSelect [options]="LogPriorityFilter" defaultLabel="proyects" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+        </ng-template>
+      </p-column> -->
+
+        <!-- <p-column  field="Priority" header="Priority (Custom)" [filter]="true" [sortable]="true"  filterMatchMode="in" [style]="{'overflow':'visible'}">
+        <ng-template pTemplate="filter" let-col>
+          <p-multiSelect [options]="LogPriorityFilter" defaultLabel="Priorities" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+        </ng-template>
+      </p-column> -->
+
+
+
+
+        <!-- </p-dataTable> -->
+
+
+
+    </div>
+</div>

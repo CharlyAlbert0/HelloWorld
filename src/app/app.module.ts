@@ -14,6 +14,15 @@ import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { AppRoutes } from './app.routing';
 import { LoginComponent } from './pages/login/login.component';
+import { LogsComponent } from './infrastructure/logs/logs.component';
+import { GlobalAttributesComponent } from './infrastructure/globalattributes/component/globalattributes.component';
+import { LoginService } from './pages/login/login.service';
+import { LogsService } from './infrastructure/logs/logs.service';
+import { SystemContext } from './infrastructure/context/model/systemcontext';
+import { NotificationsComponent } from './infrastructure/components/notifications/notifications.component';
+import { SweetAlertComponent } from './infrastructure/components/sweetalert/sweetalert.component';
+
+
 
 
 @NgModule({
@@ -26,12 +35,14 @@ import { LoginComponent } from './pages/login/login.component';
         NavbarModule,
         FooterModule
     ],
-    providers:[AuthGuard],
+    providers:[AuthGuard,LoginService,LogsComponent,LogsService,SystemContext,NotificationsComponent,SweetAlertComponent],
     declarations: [
         AppComponent,
         AdminLayoutComponent,
         AuthLayoutComponent,
-        LoginComponent
+        LoginComponent,
+        LogsComponent,
+        GlobalAttributesComponent
     ],
     bootstrap:    [ AppComponent ]
 })
