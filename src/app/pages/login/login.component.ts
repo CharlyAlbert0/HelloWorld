@@ -6,10 +6,11 @@ import { LoginService } from './login.service';
 import { EnumLogType,EnumLogPriority } from '../../infrastructure/enums/enumlog';
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 import {Subscription} from "rxjs";
-import { EnumCategoryD, EnumTypeD } from '../../infrastructure/enums/enumdialog';
+import { EnumCategoryD, EnumTypeD, EnumIconD } from '../../infrastructure/enums/enumdialog';
 import { NotificationsComponent } from '../../infrastructure/components/notifications/notifications.component';
 import { GetVersionAPIRequest } from './model/GetVersionAPIRequest.model';
 import { SweetAlertComponent } from '../../infrastructure/components/sweetalert/sweetalert.component';
+import { EnumReturnCode } from '../../infrastructure/enums/enumBasicResponse';
 
 
 declare var $:any;
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit{
     configs:Array<any>;
     ambiente:string;
     version:string;
+    WelcomeMessage:string;
     errorConfig:boolean;
     canloggin:boolean=false;
     private subscriptionTimer: Subscription;
@@ -109,18 +111,22 @@ export class LoginComponent implements OnInit{
               //como no obtuvo la version del api intentara nuevamnete
              this.loginService.GetVersionAPI(this.VersionRequest).subscribe(Response => {
                //version del api
-               this.version = Response;
+               this.version = Response.Version;
+               this.WelcomeMessage = Response.WelcomeMessageSystem;
              }, error => {//si hay algun error lo muestra en una notificacion
-              this._NotificationsComponent.ShowMessageNotify(EnumCategoryD.notification,EnumTypeD.info,'No se ha podido Establecer conexion con los datos.')            
+              this._NotificationsComponent.ShowMessageNotify(EnumCategoryD.message,EnumTypeD.info,'No se ha podido Establecer conexion con los datos.')            
                this.errorConfig=true;
                this.ambiente='No InitInfo';//se establece que no hay un verson y por lo tanto no hay ambiente
           
 
              }, () => {//la url del api contesto con la version por lo tanto la puede ver
-               this.canloggin=true;
-               this._NotificationsComponent.ShowMessageNotify(EnumCategoryD.notification,EnumTypeD.success,"Welcome to <b>SySin</b> a beautiful Inventory System for web  <b>Enjoy!</b>.")
-            
-             });
+              if(this.version != ''){
+                this.canloggin=true;
+                this._NotificationsComponent.ShowMessageNotify(EnumCategoryD.message,EnumTypeD.success,this.WelcomeMessage)
+             
+              }
+               
+             }); 
            }
 
 
@@ -152,29 +158,44 @@ export class LoginComponent implements OnInit{
             this.loginService.GetVersionAPI(this.VersionRequest).subscribe(Response => {
               //se obtiene la versoin
               debugger
-              this.version = Response;
-              this._NotificationsComponent.ShowMessageNotify(EnumCategoryD.notification,EnumTypeD.success,"Welcome to <b>SySin</b> a beautiful Inventory System for web "+this.version+" <b>Enjoy!</b>.")
+              if(Response.ReturnCode == EnumReturnCode.success.toString()){
+                this.version = Response.Version;
+                this._NotificationsComponent.ShowMessageNotify(EnumCategoryD.message,EnumTypeD.success,Response.WelcomeMessageSystem+" "+this.version+" <b>Enjoy!</b>.")
+  
+              }
+              
             }, error => {//no se pudo estabecler conexion con el api por lo tanto se reintentara cada cierto tiempo
-debugger
+
               this.errorConfig=true;
               this.ambiente='No InitInfo';
-              this._SweetAlertComponent.showSwalDialog('No se ha podido Establecer conexion con los datos:'+localStorage.getItem('APIURL'));
+              
+              //desplesgar dialog con opciones y returno de respuesta
+              this._SweetAlertComponent.showSwalDialog(EnumCategoryD.question,
+                'Cuidado','No se ha podido Establecer conexion con los datos:'+localStorage.getItem('APIURL'),
+                EnumIconD.warning).then(xres=>{
+                  debugger;
+                });
+
+              //escribir en los logs
               this.logsComponent.SaveLog('Error','LoginComponent-LoadingConfigAndDataAccess',error,EnumLogType.Error,EnumLogPriority.Hight,true);
               //metodo para reinternar y reintentar
-              this.StartIntenterLogin()
+              //this.StartIntenterLogin()
              
-            }, () => {
-              
+            }, () => {              
               this.canloggin=true;
             });
 
 
           }
-          catch(error){
-            
+          catch(error){            
             this.errorConfig=true;
             this.ambiente='No one';
-            alert(error);
+            this._SweetAlertComponent.showSwalDialog(EnumCategoryD.question,
+              'ERROR',error,
+              EnumIconD.warning).then(xres=>{
+                debugger;
+              });
+            //alert(error);
           }
 
         })

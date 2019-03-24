@@ -5,8 +5,9 @@ export enum EnumTypeD {
 }
 
 export enum EnumCategoryD {
-  notification = 0,
-  question =1
+  message = 0,//si es un mensaje tipico ok
+  question =1,//si es pregunta puede ser custom
+  modal = 2 //si es un modal
 
 }
 
@@ -19,11 +20,11 @@ export enum EnumSizeD {
 }
 
 export enum EnumIconD{
-  greenCheck=1,
-  warningred=2,
-  warningblue=3,
-  questionblue=4,
-  questionred=5
+  none = 0,
+  Check=1,
+  cross=2,
+  warning=3,
+  question=4,
 
 }
 

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 // import swal from 'sweetalert2'
+import { EnumCategoryD, EnumTypeD, EnumSizeD, EnumIconD } from '../../enums/enumdialog';
+import { EnumLogType } from '../../enums/enumlog';
+import { Observable } from 'rxjs/Observable';
 declare var $:any;
 declare var swal:any;
 @Component({
@@ -10,6 +13,88 @@ declare var swal:any;
 })
 
 export class SweetAlertComponent implements OnInit{
+
+
+  showSwalDialog(categoryDialog:EnumCategoryD,title:string,message:string,iconType:EnumIconD = EnumIconD.none) {
+    var promise = new Promise((resolve, reject) => {
+
+      if(categoryDialog == EnumCategoryD.message){
+      
+        if(iconType == EnumIconD.Check){
+          swal({
+            title: title,
+            text: message,
+            type: 'success',
+            confirmButtonClass: "btn btn-info",
+            background: '#4caf50',
+            buttonsStyling: false
+            })
+        }
+        if(iconType == EnumIconD.warning){
+          swal({
+            title: title,
+            text: message,
+            type: 'warning',
+            confirmButtonClass: "btn btn-info",
+            background: '#4caf50',
+            buttonsStyling: false
+            })
+        }
+        if(iconType == EnumIconD.cross){
+          swal({
+            title: title,
+            text: message,
+            type: 'error',
+            confirmButtonClass: "btn btn-info",
+            background: '#4caf50',
+            buttonsStyling: false
+            })
+        }
+        if(iconType == EnumIconD.none){
+          swal({
+            title: message,
+            buttonsStyling: false,
+            background: '#4caf50',
+            confirmButtonClass: "btn btn-danger"
+        }); 
+        }
+      }
+  
+      if(categoryDialog == EnumCategoryD.question || iconType == EnumIconD.question){
+        if(iconType = EnumIconD.question){
+  
+          swal({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this imaginary file!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it',
+            confirmButtonClass: "btn btn-info",
+            cancelButtonClass: "btn btn-danger",
+            background: '#4caf50',
+            buttonsStyling: false
+        }).then(function() {
+          resolve(true);            
+        }, function(dismiss) {
+          // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+          if (dismiss === 'cancel') {
+            resolve(false); ;
+          }
+        })
+          
+        }      
+      }  
+       // reject(); se comenta por que no tiene que haber errores aqui
+       
+    });
+    return promise;
+  }
+
+  //TODO
+  
+
+  //EXAMPLES!
     showSwal(type){
         if(type == 'basic'){
         	swal({
@@ -32,7 +117,8 @@ export class SweetAlertComponent implements OnInit{
                 title: "Good job!",
                 text: "You clicked the button!",
                 buttonsStyling: false,
-                confirmButtonClass: "btn btn-success"
+                background: '#4caf50',
+                confirmButtonClass: "btn btn-info"
 
             });
 
@@ -63,8 +149,9 @@ export class SweetAlertComponent implements OnInit{
                     showCancelButton: true,
                     confirmButtonText: 'Yes, delete it!',
                     cancelButtonText: 'No, keep it',
-                    confirmButtonClass: "btn btn-success",
+                    confirmButtonClass: "btn btn-info",
                     cancelButtonClass: "btn btn-danger",
+                    background: '#4caf50',
                     buttonsStyling: false
                 }).then(function() {
                   swal({
@@ -72,6 +159,7 @@ export class SweetAlertComponent implements OnInit{
                     text: 'Your imaginary file has been deleted.',
                     type: 'success',
                     confirmButtonClass: "btn btn-success",
+                    background: '#4caf50',
                     buttonsStyling: false
                     })
                 }, function(dismiss) {
@@ -82,6 +170,7 @@ export class SweetAlertComponent implements OnInit{
                       text: 'Your imaginary file is safe :)',
                       type: 'error',
                       confirmButtonClass: "btn btn-info",
+                      background: '#4caf50',
                       buttonsStyling: false
                     })
                   }
@@ -130,14 +219,7 @@ export class SweetAlertComponent implements OnInit{
 
 
 
-    showSwalDialog(message:string){
-
-      swal({
-        title: message,
-        buttonsStyling: false,
-        confirmButtonClass: "btn btn-danger"
-    });
-  }
+    
    
     public ngOnInit(){}
 }

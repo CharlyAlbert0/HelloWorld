@@ -434,7 +434,7 @@ body.swal2-shown {
 }
 
 .swal2-modal .swal2-title {
-    color: #595959;
+    color: #fff;
     font-size: 30px;
     text-align: center;
     font-weight: 600;
@@ -553,7 +553,7 @@ body.swal2-shown {
     margin: 0;
     padding: 0;
     line-height: normal;
-    color: #545454;
+    color: #fff;
 }
 
 .swal2-modal .swal2-checkbox,
@@ -838,7 +838,7 @@ body.swal2-shown {
     position: absolute;
     width: 60px;
     height: 120px;
-    background: #fff;
+    background: #4caf50;
 }
 
 .swal2-icon.swal2-success::before {
@@ -876,7 +876,7 @@ body.swal2-shown {
 .swal2-icon.swal2-success .fix {
     width: 7px;
     height: 90px;
-    background-color: #fff;
+    background-color: #4caf50;
     position: absolute;
     left: 28px;
     top: 8px;

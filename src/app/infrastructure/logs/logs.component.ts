@@ -64,7 +64,7 @@ export class LogsComponent implements OnInit {
   }
 
   SaveLog(title: string,section:string,errorSubscribe:errorSubscribeModel | any,type:number,Priority:number,IsAlert:boolean,IsOpenBitacora?:boolean){
-debugger
+    debugger
     if(localStorage.getItem('ISDEVQA'))
     {
       let xs= localStorage.getItem('ISDEVQA')
@@ -75,6 +75,7 @@ debugger
     }
     if (localStorage.getItem('LogStorage'))
     {
+      debugger;
         this.ListLogs= JSON.parse(localStorage.getItem('LogStorage'));
         let objLog:LogsModel = new LogsModel();
         objLog.Message=errorSubscribe != null ? errorSubscribe.toString():'';

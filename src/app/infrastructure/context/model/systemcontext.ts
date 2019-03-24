@@ -9,7 +9,9 @@ export class SystemContext{
     public menuItems: any[];
     CurrentGlobalAttributes:GlobalAttributesModel[];
     openBitacora:boolean = false;
-
+    VersionAPI:string;
+    VersionSYSIN:string;
+    
 
 
 }

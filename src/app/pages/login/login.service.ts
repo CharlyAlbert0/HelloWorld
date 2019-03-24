@@ -11,6 +11,7 @@ import { LoginModel } from './model/login.model';
 import { LogsComponent } from '../../infrastructure/logs/logs.component';
 import { GetVersionAPIRequest } from './model/GetVersionAPIRequest.model';
 import { SystemContext } from '../../infrastructure/context/model/systemcontext';
+import { GetVersionAPIResponse } from './model/GetVersionAPIResponse';
 declare var swal: any;
 
 
@@ -28,7 +29,7 @@ export class LoginService {
         this.urlApi = localStorage.getItem('APIURL')
     }
   }
-  GetVersionAPI(request:GetVersionAPIRequest): Observable<string>{
+  GetVersionAPI(request:GetVersionAPIRequest): Observable<GetVersionAPIResponse>{
     
     this.GetUrlLocalStorage();
     let headers = new Headers();
@@ -39,7 +40,7 @@ export class LoginService {
 
     // let options = new RequestOptions( {method: RequestMethod.Post, headers: headers });
     return this.http.post(this.urlApi+'App/GetVersionAPI',request, options)
-    .map(res =>  {console.log(res.json()); return res.json() as string }).catch(this.handleError);
+    .map(res =>  {console.log(res.json()); return res.json() as GetVersionAPIResponse }).catch(this.handleError);
 
   }
 

@@ -13,7 +13,7 @@ export class NotificationsComponent implements OnInit{
     //message: "Welcome to <b>SySin</b> a beautiful Inventory System for web  <b>Enjoy!</b>."
     ShowMessageNotify(Category:EnumCategoryD,Type:EnumTypeD, message:string){
         debugger
-          if(Category == EnumCategoryD.notification)
+          if(Category == EnumCategoryD.message)
           {
               if(Type == EnumTypeD.success){
                   $.notify({
