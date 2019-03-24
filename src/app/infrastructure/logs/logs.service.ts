@@ -62,13 +62,13 @@ AddLog( Message:string,
         //variable pasa saber si se logea a LS
         let LogLocalStorage:string;
 
-        //valor a variable bandera BD
+        //valor a variable bandera console
         LogConsole= this._SystemContext.CurrentGlobalAttributes.find(global => global.Name == "LogConsole").Name;
 
         //valor a variable bandera BD
         LogDataBase= this._SystemContext.CurrentGlobalAttributes.find(global => global.Name == "LogDataBase").Name;
 
-        //valor a variable bandera BD
+        //valor a variable bandera LS
         LogLocalStorage= this._SystemContext.CurrentGlobalAttributes.find(global => global.Name == "LogLocalStorage").Name;
 
         //saber si se loge a consola

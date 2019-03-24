@@ -11,6 +11,7 @@ import { NotificationsComponent } from '../../infrastructure/components/notifica
 import { GetVersionAPIRequest } from './model/GetVersionAPIRequest.model';
 import { SweetAlertComponent } from '../../infrastructure/components/sweetalert/sweetalert.component';
 import { EnumReturnCode } from '../../infrastructure/enums/enumBasicResponse';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 
 declare var $:any;
@@ -35,11 +36,13 @@ export class LoginComponent implements OnInit{
     canloggin:boolean=false;
     private subscriptionTimer: Subscription;
     VersionRequest:GetVersionAPIRequest = {};
+    deviceInfo = null;
     
 
     constructor(private route: ActivatedRoute,
                 private router: Router,private http:Http, private logsComponent:LogsComponent, private loginService:LoginService,
                 private _NotificationsComponent:NotificationsComponent,private _SweetAlertComponent:SweetAlertComponent,
+                private deviceService: DeviceDetectorService
                 
             )
     {
@@ -77,11 +80,21 @@ export class LoginComponent implements OnInit{
 
 
 
-    ngOnInit(){      
+    ngOnInit(){
+      
+        //Se intenta obtener la ip  
+        this.loginService.getIP()
+        .subscribe(res=> {
+          debugger
+        this.VersionRequest.IP = JSON.stringify(res);
+        this.LoadingConfigAndDataAccess();
+        }, error => {//si falla el servicio de get ip , lanzar de todas maneras el loading config
+          this.LoadingConfigAndDataAccess();
+        });
         
         this.checkFullPageBackgroundImage();
 
-        this.LoadingConfigAndDataAccess();
+        
 
         setTimeout(function(){
             // after 1000 ms we add the class animated to the login/register card
@@ -137,8 +150,31 @@ export class LoginComponent implements OnInit{
        
       }
 
+      GetInformationDevice() {
+       
+        try{
+debugger
+          //se intenta obtener el device info
+        this.VersionRequest.DeviceInfo = "browser|"+this.deviceService.getDeviceInfo().browser+
+        "browser_version|"+this.deviceService.getDeviceInfo().browser_version+
+        "device|"+this.deviceService.getDeviceInfo().device+
+        "os|"+this.deviceService.getDeviceInfo().os+
+        "os_version|"+this.deviceService.getDeviceInfo().os_version+
+        "userAgent|"+this.deviceService.getDeviceInfo().userAgent;      
+        
+
+        }
+        catch(error){
+
+        }
+        
+    }
+
         //cargar las configuraciones iniciales para saber si hay coneccin a la api
     LoadingConfigAndDataAccess(){
+
+      //obtener informacion del deivce
+      this.GetInformationDevice()
         //se optiene la url y desmas atrinutos inciales
         this.http.request('assets/config/webconfig.json').subscribe
         (response =>{
@@ -149,15 +185,16 @@ export class LoginComponent implements OnInit{
             localStorage.setItem('APIURL', this.configs["APIURL"]);
             localStorage.setItem('SSOURL', this.configs["SSOURL"]);
             localStorage.setItem('ISDEVQA', this.configs["ISDEVQA"]);
-            this.ambiente=localStorage.getItem('APIURL');
-            //se obtiene la ifnroacion de quien quiere acceder
-            this.VersionRequest.IP ="not yet"
-            this.VersionRequest.DeviceInfo ="No yet"
+            this.ambiente=localStorage.getItem('APIURL');          
+           
 
             //se inteta obtener la version
             this.loginService.GetVersionAPI(this.VersionRequest).subscribe(Response => {
               //se obtiene la versoin
               debugger
+             
+              
+
               if(Response.ReturnCode == EnumReturnCode.success.toString()){
                 this.version = Response.Version;
                 this._NotificationsComponent.ShowMessageNotify(EnumCategoryD.message,EnumTypeD.success,Response.WelcomeMessageSystem+" "+this.version+" <b>Enjoy!</b>.")

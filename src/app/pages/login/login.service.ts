@@ -29,6 +29,13 @@ export class LoginService {
         this.urlApi = localStorage.getItem('APIURL')
     }
   }
+ 
+  getIP(): Observable<any[]> {
+    return this.http.get('http://api.ipstack.com/check?access_key=8e094926f56745acee257f0957ed59a1') // ...using post request
+    .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+   }
+
   GetVersionAPI(request:GetVersionAPIRequest): Observable<GetVersionAPIResponse>{
     
     this.GetUrlLocalStorage();

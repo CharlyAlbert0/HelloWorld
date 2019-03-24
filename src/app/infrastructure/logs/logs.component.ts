@@ -75,7 +75,7 @@ export class LogsComponent implements OnInit {
     }
     if (localStorage.getItem('LogStorage'))
     {
-      debugger;
+        debugger;
         this.ListLogs= JSON.parse(localStorage.getItem('LogStorage'));
         let objLog:LogsModel = new LogsModel();
         objLog.Message=errorSubscribe != null ? errorSubscribe.toString():'';

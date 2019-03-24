@@ -21,7 +21,7 @@ import { LogsService } from './infrastructure/logs/logs.service';
 import { SystemContext } from './infrastructure/context/model/systemcontext';
 import { NotificationsComponent } from './infrastructure/components/notifications/notifications.component';
 import { SweetAlertComponent } from './infrastructure/components/sweetalert/sweetalert.component';
-
+import { DeviceDetectorModule, DeviceDetectorService } from 'ngx-device-detector';
 
 
 
@@ -33,9 +33,10 @@ import { SweetAlertComponent } from './infrastructure/components/sweetalert/swee
         HttpModule,
         SidebarModule,
         NavbarModule,
-        FooterModule
+        FooterModule,
+        DeviceDetectorModule.forRoot()
     ],
-    providers:[AuthGuard,LoginService,LogsComponent,LogsService,SystemContext,NotificationsComponent,SweetAlertComponent],
+    providers:[AuthGuard,LoginService,LogsComponent,LogsService,SystemContext,NotificationsComponent,SweetAlertComponent,DeviceDetectorService],
     declarations: [
         AppComponent,
         AdminLayoutComponent,

@@ -12,12 +12,14 @@ import { PricingComponent } from './pricing/pricing.component';
 import { LockComponent } from './lock/lock.component';
 // import { LoginComponent } from './login/login.component';
 
+
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(PagesRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     RegisterComponent,
